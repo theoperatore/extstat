@@ -6,7 +6,7 @@ require 'find';
 
 class ExtStat
 
-	VERSION = '0.8.4';
+	VERSION = '0.5.0';
 
 
 	def self.parse(args)
@@ -143,43 +143,5 @@ class ExtStat
 		stats.dTime = stats.endTime - stats.startTime;
 		stats;
 	end
-	
-	
 end
-
-#capture the options -- and process the path to search and hand options to opt_parser
-options = ExtStat.parse(ARGV);
-
-puts "Traversing #{options.directory}...";
-
-#start the process -- need to pass in the directory to search through
-results = ExtStat.search(options);
-
-puts " ";
-
-if (results.files.length > 0)
-	puts "Show Matched Files? (y/n)";
-	matched = STDIN.gets.chomp;
-	puts results.files if (matched =~ /(y|Y|yes|YES)/);
-end
-
-puts " ";
-
-if (results.skipped.length > 0)
-	puts "Show Skipped Directories and Files? (y/n)";
-	skipped = STDIN.gets.chomp;
-	puts results.skipped if (skipped =~ /(y|Y|yes|YES)/);
-end
-
-
-puts " ";
-puts "Skipped Directories/Files     --  #{results.skipped.length}";
-puts "Directory Count               --  #{results.dircount}";
-puts "File Count                    --  #{results.filecount}";
-puts "Total size of counted files   --  #{results.countsize}";
-puts "Total size of traversed files --  #{results.totalsize}";
-puts "Seconds to traverse           --  #{results.dTime}";
-puts " ";
-puts " ";
-puts "Counted File Size to Total File Size %  --  #{((results.countsize.to_f / results.totalsize.to_f) * 100).round(3)}%";
 
