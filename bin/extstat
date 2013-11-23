@@ -13,7 +13,7 @@ results = ExtStat.search(options);
 puts " ";
 
 if (results.files.length > 0)
-	puts "Show Matched Files? (y/n)";
+	print "Show Matched Files? (y/n)";
 	matched = STDIN.gets.chomp;
 	puts results.files if (matched =~ /(y|Y|yes|YES)/);
 end
@@ -21,7 +21,7 @@ end
 puts " ";
 
 if (results.skipped.length > 0)
-	puts "Show Skipped Directories and Files? (y/n)";
+	print "Show Skipped Directories and Files? (y/n)";
 	skipped = STDIN.gets.chomp;
 	puts results.skipped if (skipped =~ /(y|Y|yes|YES)/);
 end

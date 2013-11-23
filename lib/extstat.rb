@@ -1,12 +1,10 @@
-#!/usr/bin/env ruby
-
 require 'optparse';
 require 'ostruct';
 require 'find';
 
 class ExtStat
 
-	VERSION = '0.5.0';
+	VERSION = '0.5.2';
 
 
 	def self.parse(args)
