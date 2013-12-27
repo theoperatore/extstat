@@ -114,6 +114,15 @@ class ExtStat
 						stats.skipped.push(path);
 						Find.prune();
 
+					#don't search through the /dev folder but count it's directory size
+					elsif (File.basename(path) =~ /(dev)/)
+						puts "Skipping #{path}" if options.verbose;
+
+						stats.totalsize += FileTest.size?(path) if FileTest.size?(path) != nil;
+
+						Find.prune();
+						
+
 					#don't search through connected volumes unless specified
 					elsif (File.basename(path) =~ /(Volumes)/ && options.all == false)
 						puts "Skipping: #{path}" if options.verbose;
